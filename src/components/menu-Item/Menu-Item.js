@@ -1,10 +1,13 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { BackgroundImgContainer, ContentContainer, ContentSubTitle, ContentTitle, MenuItemContainer } from './Menu-Item-style'
 
-const MenuItem = ({title,imageUrl,size}) => {
-    console.log(imageUrl);
+const MenuItem = ({items:{title,imageUrl,size,linkUrl}}) => {
+    const history= useHistory()
     return (
-        <MenuItemContainer size={size}>
+        <MenuItemContainer 
+        onClick={()=>history.push(linkUrl)}
+        size={size}>
             <BackgroundImgContainer
             imageUrl={imageUrl}
             className='background-image'
