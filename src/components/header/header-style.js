@@ -20,6 +20,10 @@ export const OptionsContainer=styled.div`
 export const OptionLink= styled(Link)`
     padding: 10px 15px;
 `;
+export const Option= styled.div`
+    padding: 10px 15px;
+    cursor: pointer;
+`;
 
 export const LogoContainer=styled(Link)`
     height: 100%;
