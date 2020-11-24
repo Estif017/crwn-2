@@ -30,7 +30,6 @@ function App({setCurrentUser,currentUser}) {
       return ()=> unSubscribeFromAuth()
       
     },[])
-    console.log(currentUser,'ues')
   return (
     <div >
       <Header/>
