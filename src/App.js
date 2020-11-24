@@ -25,11 +25,11 @@ function App() {
         }else{
           setCurrentUser(userAuth)
         }
-        console.log(currentUser);
       })
       return ()=> unSubscribeFromAuth()
       
     },[])
+    console.log(currentUser);
   return (
     <div >
       <Header currentUser={currentUser}/>
