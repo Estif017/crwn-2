@@ -51,7 +51,7 @@ const SignIn = () => {
                  />
                  <Buttons>
                     <CustomButton type="submit">Sign in</CustomButton>
-                    <CustomButton className='google-sign-in' type='button' onClick={SignInWithGoogle}>Sign in with google</CustomButton>
+                    <CustomButton isGoogleSignIn type='button' onClick={SignInWithGoogle}>Sign in with google</CustomButton>
                  </Buttons>
             </form>
         </SignInContainer>
