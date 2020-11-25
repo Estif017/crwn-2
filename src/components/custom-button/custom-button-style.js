@@ -15,14 +15,11 @@ export const Button=styled.button`
     font-weight: bolder;
     border: none;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
 
-    &:hover{
-        background-color: white;
-        color: black;
-        border: 1px solid black;
-    }
 
-    &.google-sign-in {
+    &.isGoogle-sign-in {
     background-color: #4285f4;
     color: white;
 
@@ -30,5 +27,23 @@ export const Button=styled.button`
       background-color: #357ae8;
       border: none;
     }
+  }
+  
+  &.inverted{
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+
+    &:hover{
+      background-color: black;
+      color: white;
+      border: none;
+    }
+  }
+  
+  &:hover{
+      background-color: white;
+      color: black;
+      border: 1px solid black;
   }
 `

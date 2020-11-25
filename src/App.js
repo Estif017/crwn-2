@@ -1,14 +1,15 @@
-import { useEffect, useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Header from './components/header/Header';
 import { auth, createUserProfileDocument } from './firebase/firebase-util';
 import HomePage from './pages/HomePage/HomePage';
 import ShopPage from './pages/shopPage/ShopPage';
 import SignInSignUpPage from './pages/sign-in-sign-up/SignInSignUpPage';
+import { setCurrentUser } from './redux/User/user-actions';
 
-function App() {
-  const [currentUser,setCurrentUser]=useState(null)
+function App({setCurrentUser,currentUser}) {
   let unSubscribeFromAuth=null
   useEffect(()=>{
     // eslint-disable-next-line
@@ -29,17 +30,29 @@ function App() {
       return ()=> unSubscribeFromAuth()
       
     },[])
-    console.log(currentUser);
   return (
     <div >
-      <Header currentUser={currentUser}/>
+      <Header/>
       <Switch>
         <Route exact path="/" component={HomePage}/>
         <Route exact path="/shop" component={ShopPage}/>
-        <Route exact path="/signin" component={SignInSignUpPage}/>
+        <Route exact path="/signin" 
+          render={()=> currentUser ? 
+            (<Redirect to='/'/>):
+            (<SignInSignUpPage/>)
+          }
+        />
       </Switch>
     </div>
   );  
 }
 
-export default App;
+const mapStateToProps = ({user:{currentUser}})=>({
+  currentUser
+})
+
+const mapDispatchToProps=dispatch=>({
+  setCurrentUser:user=>dispatch(setCurrentUser(user))
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);
